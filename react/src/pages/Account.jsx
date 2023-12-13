@@ -13,7 +13,7 @@ function Account() {
 
 
     return (
-        <div><h1>Account</h1></div>
+        <div><h1>Account</h1><p>{acce[0]}</p></div>
         
     )
 }

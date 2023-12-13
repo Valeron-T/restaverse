@@ -23,7 +23,7 @@ function App() {
           <Link to={"/reviews"} onClick={() => setsidebarActiveItem(2)}>
             <SidebarItem icon={<IoMdChatbubbles />} text={"Reviews"} active={sidebarActiveItem==2?true:false}/>
           </Link>
-          <Link to={"/home"} onClick={() => setsidebarActiveItem(3)}>
+          <Link to={"/analytics"} onClick={() => setsidebarActiveItem(3)}>
             <SidebarItem icon={<FaChartPie />} text={"Analytics"} active={sidebarActiveItem==3?true:false}/>
           </Link>
           <SidebarItem icon={<RiSettings3Fill />} text={"Settings"} />
@@ -33,7 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/reviews" element={<Reviews />} />
-          <Route path="/home" element={<Account />} />
+          <Route path="/analytics" element={<Account />} />
         </Routes>
       </div>
 

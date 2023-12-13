@@ -9,7 +9,7 @@ function SignIn({ isExpanded }) {
 
     return (
         <div className={`border-t flex p-3 transition-all cursor-pointer ${isExpanded ? "" : "max-sm:hidden"} `}>
-            <div className="p-2 rounded-lg bg-purple-500 hover:bg-purple-800" onClick={authenticate}>
+            <div className="p-2 rounded-lg bg-blue-500 hover:bg-blue-800" onClick={authenticate}>
                 {localStorage.getItem('user') ? <User /> : <LuLogIn />}
             </div>
             <div

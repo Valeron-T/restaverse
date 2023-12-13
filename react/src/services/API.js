@@ -1,3 +1,5 @@
+import { json } from "react-router-dom";
+
 const BaseAPI_URL = "http://localhost:5000"
 
 export const authenticate = async () => {
@@ -12,12 +14,22 @@ export const authenticate = async () => {
 }
 
 export const getEvents = async () => {
-  const response = await fetch(`${BaseAPI_URL}/events`, {
-    headers: {
-      "Authorization": `Bearer ${localStorage.getItem('JWT')}`
-    }
-  });
-  const jsonDataa = await response.json();
-  console.log(jsonDataa)
+  if (localStorage.getItem('JWT') != null) {
+    const response = await fetch(`${BaseAPI_URL}/events`, {
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem('JWT')}`
+      }
+    });
+    const jsonDataa = await response.json();
+    console.log(jsonDataa)
+  } else {
+    console.log("Missing JWT")
+    return new Response(JSON.stringify({"message":"Bad Format"}), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+  
+  
   return 0;
 }

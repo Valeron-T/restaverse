@@ -44,7 +44,7 @@ export default function Sidebar({ children }) {
                     {/* Button visible only on large screens */}
                     <button
                         onClick={() => setExpanded((curr) => !curr)}
-                        className="p-1.5 rounded-lg bg-purple-500 hover:bg-purple-900 max-sm:hidden"
+                        className="p-1.5 rounded-lg bg-blue-500 hover:bg-blue-900 max-sm:hidden"
                     >
                         {expanded ? <ChevronFirst /> : <ChevronLast />}
                     </button>
@@ -52,7 +52,7 @@ export default function Sidebar({ children }) {
                     {/* Button visible only on small screens */}
                     <button
                         onClick={() => setExpanded((curr) => !curr)}
-                        className="p-1.5 rounded-lg bg-purple-500 hover:bg-purple-900 sm:hidden"
+                        className="p-1.5 rounded-lg bg-blue-500 hover:bg-blue-900 sm:hidden"
                     >
                         {expanded ? <ChevronUp /> : <ChevronDown />}
                     </button>
@@ -78,8 +78,8 @@ export function SidebarItem({ icon, text, active, alert }) {
         font-medium rounded-md cursor-pointer
         transition-colors group
         ${active
-                    ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-                    : "hover:bg-indigo-50 text-gray-600"
+                    ? "bg-gradient-to-tr from-sky-200 to-sky-100 text-sky-800"
+                    : "hover:bg-sky-50 text-gray-600"
                 }
     `}
         >
@@ -92,7 +92,7 @@ export function SidebarItem({ icon, text, active, alert }) {
             </span>
             {alert && (
                 <div
-                    className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${expanded ? "" : "top-2"
+                    className={`absolute right-2 w-2 h-2 rounded bg-sky-400 ${expanded ? "" : "top-2"
                         }`}
                 />
             )}
@@ -101,7 +101,7 @@ export function SidebarItem({ icon, text, active, alert }) {
                 <div
                     className={`
           absolute left-full rounded-md px-2 py-1 ml-6
-          bg-indigo-100 text-indigo-800 text-sm
+          bg-sky-100 text-sky-800 text-sm
           invisible opacity-20 -translate-x-3 transition-all
           group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
       `}
