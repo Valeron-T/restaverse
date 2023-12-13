@@ -29,7 +29,7 @@ export const authenticate = async () => {
   // Go to generated auth url to sign in with google
   window.location.assign(jsonData.auth_url);
   console.log("Auth complete")
-  return 0;
+  return jsonData.auth_url;
 }
 
 export const getEvents = async () => {

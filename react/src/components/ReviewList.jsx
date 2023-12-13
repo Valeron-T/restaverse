@@ -12,11 +12,9 @@ function ReviewList() {
 
     return (
         <div>
-            {reviews && reviews['locationReviews'].map((review, index) => (
+            {reviews['locationReviews']?.map((review, index) => (
                 <div key={index}>
-                    <h3>Review {index + 1}</h3>
-                    <p>Star Rating: {review.review.starRating}</p>
-                    <ReviewCard name={review.review.reviewer.displayName??""} comment={review.review.comment}/>
+                    <ReviewCard name={review.review.reviewer.displayName} comment={review.review.comment} rating={review.review.starRating} date={review.review.updateTime}/>
                 </div>
                 
             ))}
