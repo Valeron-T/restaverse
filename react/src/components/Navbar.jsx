@@ -44,7 +44,7 @@ export default function Sidebar({ children }) {
                     {/* Button visible only on large screens */}
                     <button
                         onClick={() => setExpanded((curr) => !curr)}
-                        className="p-1.5 rounded-lg bg-blue-500 hover:bg-blue-900 max-sm:hidden"
+                        className="p-1.5 rounded-lg text-slate-200 bg-blue-500 hover:bg-blue-900 max-sm:hidden"
                     >
                         {expanded ? <ChevronFirst /> : <ChevronLast />}
                     </button>
@@ -52,7 +52,7 @@ export default function Sidebar({ children }) {
                     {/* Button visible only on small screens */}
                     <button
                         onClick={() => setExpanded((curr) => !curr)}
-                        className="p-1.5 rounded-lg bg-blue-500 hover:bg-blue-900 sm:hidden"
+                        className="p-1.5 rounded-lg text-slate-200 bg-blue-500 hover:bg-blue-900 sm:hidden"
                     >
                         {expanded ? <ChevronUp /> : <ChevronDown />}
                     </button>
