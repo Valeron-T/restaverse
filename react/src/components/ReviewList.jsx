@@ -6,7 +6,7 @@ function ReviewList() {
     const [reviews, setreviews] = useState({})
 
     useEffect(() => {
-        var reviewsJSON = getTopReviews().then((v) => setreviews(v))
+        getTopReviews().then((v) => setreviews(v))
     }, [])
 
 

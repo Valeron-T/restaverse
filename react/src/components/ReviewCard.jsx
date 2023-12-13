@@ -26,7 +26,7 @@ function ReviewCard({ name, date, rating, comment, }) {
                         {stars}
                     </div>
                 </div>
-                <p className='pt-1 pl-4 text-xs'>last modified: {date.split("T")[0]}</p>
+                <p className='pt-1 pl-4 text-xs'>Last modified on {date.split("T")[0]}</p>
                 <div className="p-4">
                     <p>{comment}</p>
                 </div>

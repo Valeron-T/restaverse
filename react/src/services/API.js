@@ -1,6 +1,6 @@
 import { json } from "react-router-dom";
 
-const BaseAPI_URL = "http://localhost:5000"
+const BaseAPI_URL = "http://192.168.0.132:5000"
 
 async function fetchWithAuth(relativePath) {
   if (localStorage.getItem('JWT') != null) {
@@ -27,7 +27,7 @@ export const authenticate = async () => {
   const jsonData = await response.json();
 
   // Go to generated auth url to sign in with google
-  window.location.assign(jsonData.auth_url);
+  window.location.replace(jsonData.auth_url);
   console.log("Auth complete")
   return jsonData.auth_url;
 }

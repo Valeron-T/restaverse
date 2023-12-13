@@ -6,21 +6,13 @@ import { Link } from 'react-router-dom';
 
 
 function SignIn({ isExpanded }) {
-    // TODO: Fix redirect for mobile devices
-    // const [AuthUrl, setAuthUrl] = useState("")
-
-    // useEffect(() => {
-    //     var events = authenticate().then(v => setAuthUrl(v))
-    // }, [])
-    
 
     return (
         <div className={`border-t flex p-3 transition-all cursor-pointer ${isExpanded ? "bg-blue-100" : "max-sm:hidden"} `}>
             <button className="p-2 rounded-lg text-slate-200 bg-blue-500 hover:bg-blue-800" onClick={authenticate}>
                 {localStorage.getItem('user') ? <User /> : <LuLogIn />}
             </button>
-            {/* <Link to={AuthUrl} target='_blank'>cyv</Link> */}
-            
+
             <div
                 className={`
               flex justify-between items-center
