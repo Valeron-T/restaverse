@@ -10,7 +10,6 @@ async function fetchWithAuth(relativePath) {
       }
     });
     const jsonDataa = await response.json();
-    console.log(jsonDataa)
     return jsonDataa
   } else {
     console.log("Missing JWT")
@@ -18,7 +17,7 @@ async function fetchWithAuth(relativePath) {
       status: 400,
       headers: { 'Content-Type': 'application/json' },
     });
-    return await response
+    return await response.json()
   }
 }
 
@@ -35,6 +34,16 @@ export const authenticate = async () => {
 
 export const getEvents = async () => {
   var result = await fetchWithAuth("/events")
-  console.log(await result.json())
+  return result;
+}
+
+export const getLocations = async () => {
+  var result = await fetchWithAuth("/locations")
+  return result;
+}
+
+export const getTopReviews = async () => {
+  var result = await fetchWithAuth("/reviews/latest")
+  console.log(result)
   return result;
 }

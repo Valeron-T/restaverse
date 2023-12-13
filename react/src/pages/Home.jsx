@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
+
 import { useNavigate } from 'react-router-dom';
 
-function Home() {
+import ReviewCard from '../components/ReviewCard';
+import ReviewList from '../components/ReviewList';
+
+
+function Home({ isLoggedin }) {
   const navigate = useNavigate()
-  var loggedIn = localStorage.getItem("JWT")
+
 
   useEffect(() => {
     // Search URL params for jwt token, name and email
@@ -17,19 +22,22 @@ function Home() {
       localStorage.setItem('JWT', token);
       localStorage.setItem('user', user);
       localStorage.setItem('email', email);
+      navigate("/")
     }
-    navigate("/")
-
 
   }, [])
 
 
   return (
-    <div className='flex flex-1 flex-col'>
-      <div className="flex flex-col m-4 sm:p-8 p-4 rounded-2xl bg-white font-poppins">
-        <h1 className='md:text-5xl sm:text-4xl text-3xl'>Hello {loggedIn?localStorage.getItem("user").toString().split(" ")[0]:"Guest"} !</h1>
-        {loggedIn&&<p className='mt-2'>Here's what changed while you were away</p>}
+    <div className='flex flex-1 flex-col font-poppins'>
+      <div className="flex flex-col m-4 sm:p-6 p-4 rounded-2xl bg-white">
+        <h1 className='md:text-5xl sm:text-4xl text-3xl'>Hello {isLoggedin ? localStorage.getItem("user").toString().split(" ")[0] : "Guest"} !</h1>
+        {isLoggedin && <p className='mt-2'>Here's what changed while you were away</p>}
       </div>
+      {isLoggedin && <div className="flex flex-col mt-0 m-4 sm:p-6 p-4 rounded-2xl bg-white">
+        <h1 className='md:text-4xl sm:text-3xl text-2xl pb-2'>Latest Reviews</h1>
+        <ReviewList />
+      </div>}
     </div>
   )
 }
