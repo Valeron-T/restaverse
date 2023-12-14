@@ -14,8 +14,8 @@
         "createTime": "2023-04-01T12:00:00Z",
         "updateTime": "2023-04-02T09:00:00Z",
         "reviewReply": {
-          "comment": "Thank You so much for the review",
-          "updateTime": "2023-12-14T13:55:15Z"
+          "comment": "Thanks for the review",
+          "updateTime": "2023-12-14T18:14:17Z"
         }
       }
     },
@@ -32,7 +32,10 @@
         "comment": "From the ambiance to the diverse menu offerings, each visit unveils a new reason to fall in love with this restaurant",
         "createTime": "2023-03-05T15:30:00Z",
         "updateTime": "2023-03-06T11:00:00Z",
-        "reviewReply": {}
+        "reviewReply": {
+          "comment": "We are glad that you had a good time :)",
+          "updateTime": "2023-12-14T17:31:26Z"
+        }
       }
     },
     {
@@ -44,8 +47,8 @@
           "displayName": "Alice Johnson",
           "profilePhotoUrl": "https://example.com/profiles/alice.jpg"
         },
-        "starRating": 4,
-        "comment": "The attention to detail in both presentation and taste left me longing for another visit.",
+        "starRating": 3,
+        "comment": "The attention to detail in both presentation and taste left me longing for another visit. However, the vegetables were a bit undercooked.",
         "createTime": "2023-02-10T09:30:00Z",
         "updateTime": "2023-02-11T08:00:00Z",
         "reviewReply": {}
@@ -60,8 +63,8 @@
           "displayName": "Bob Anderson",
           "profilePhotoUrl": "https://example.com/profiles/bob.jpg"
         },
-        "starRating": 5,
-        "comment": "An inviting atmosphere combined with mouthwatering flavors made for an unforgettable dining experience.",
+        "starRating": 1,
+        "comment": "Absolutely poor customer service. Had the worst 2 hours of my life waiting for my order only to realise the chef walked out.",
         "createTime": "2023-02-01T11:45:00Z",
         "updateTime": "2023-02-02T10:00:00Z",
         "reviewReply": {}

@@ -177,7 +177,7 @@ def events():
     # accname = accs.accounts().list().execute()
     # print(accname)
 
-    return {"message":"Events called"}
+    return {"message": "Events called"}
 
 
 @app.route("/locations")
@@ -185,29 +185,47 @@ def events():
 def location():
     return routes.get_locations()
 
+
 @app.route("/reviews/latest")
 @login_is_required
 def latest_reviews():
     return routes.get_latest_reviews()
 
-@app.route("/reviews/reply", methods=['POST'])
-# @login_is_required
+
+@app.route("/reviews/reply", methods=['PUT'])
+@login_is_required
 def reply_to_review():
-    if request.method == 'POST':
+    if request.method == 'PUT':
+        # Access the JSON data sent with the POST request
+        data = request.json
+
+        print(data)
+
+        # Process the received data
+        if data:
+            rid = data.get('rid')
+            reply = data.get('reply')
+            response = routes.update_review(rid, reply)
+            return response
+        else:
+            return jsonify({'message': 'No JSON data received'}), 400
+
+
+@app.route("/reviews/delete", methods=['DELETE'])
+@login_is_required
+def delete_review():
+    if request.method == 'DELETE':
         # Access the JSON data sent with the POST request
         data = request.json
 
         # Process the received data
         if data:
             rid = data.get('rid')
-            reply = data.get('reply')
-            # Perform any processing required
-
-            # Return a response
-            response = routes.update_review(rid, reply)
+            response = routes.delete_review(rid)
             return response
         else:
             return jsonify({'message': 'No JSON data received'}), 400
+
 
 @app.route("/logout")
 def logout():

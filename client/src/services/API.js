@@ -2,18 +2,22 @@ import { json } from "react-router-dom";
 
 const BaseAPI_URL = "http://192.168.0.132:5000"
 
-async function fetchWithAuth(relativePath) {
+// Call API calls with this wrapper to check if auth token is present locally.
+async function fetchWithAuth(relativePath, method = "GET", requestBody = null) {
   if (localStorage.getItem('JWT') != null) {
     const response = await fetch(`${BaseAPI_URL}/${relativePath}`, {
+      method: method,
       headers: {
-        "Authorization": `Bearer ${localStorage.getItem('JWT')}`
-      }
+        "Authorization": `Bearer ${localStorage.getItem('JWT')}`,
+        'Content-Type': 'application/json'
+      },
+      body: (method === "POST" || method === "PUT" || method === "DELETE") ? JSON.stringify(requestBody) : null
     });
     const jsonDataa = await response.json();
     return jsonDataa
   } else {
     console.log("Missing JWT")
-    const response = new Response(JSON.stringify({message:"Bad Format"}), {
+    const response = new Response(JSON.stringify({ message: "Bad Format" }), {
       status: 400,
       headers: { 'Content-Type': 'application/json' },
     });
@@ -21,6 +25,7 @@ async function fetchWithAuth(relativePath) {
   }
 }
 
+// Handles OAuth flow
 export const authenticate = async () => {
   console.log("Begin Auth")
   const response = await fetch(`${BaseAPI_URL}/login`);
@@ -37,13 +42,38 @@ export const getEvents = async () => {
   return result;
 }
 
+// Gets all available locations linked to user account
 export const getLocations = async () => {
   var result = await fetchWithAuth("/locations")
   return result;
 }
 
+// Gets top 50 reviews across all locations linked to user account
 export const getTopReviews = async () => {
   var result = await fetchWithAuth("/reviews/latest")
+  console.log(result)
+  return result;
+}
+
+// Updates a particular review
+export const replyToReview = async (reviewId, replyMessage) => {
+  // reviewID is a full review identifier such as accounts/*/locations/*/reviews/*
+  const reqbody = {
+    "rid": reviewId,
+    "reply": replyMessage
+  }
+  var result = await fetchWithAuth("/reviews/reply", "PUT", reqbody)
+  console.log(result)
+  return result;
+}
+
+// Deletes a particular review
+export const deleteReview = async (reviewId) => {
+  // reviewID is a full review identifier such as accounts/*/locations/*/reviews/*
+  const reqbody = {
+    "rid": reviewId
+  }
+  var result = await fetchWithAuth("/reviews/delete", "DELETE", reqbody)
   console.log(result)
   return result;
 }

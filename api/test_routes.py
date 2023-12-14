@@ -67,3 +67,36 @@ def update_review(complete_review_id, comment):
         status=200,
         mimetype='application/json'
     )
+
+
+def delete_review(complete_review_id):
+
+    status = {
+            "message": "Error occurred"
+        }
+
+    # Read dummy data json and store in dict
+    with open('reviews.json', 'r') as file:
+        data = json.load(file)
+
+    updated_reply = {}
+
+    # For simplicity using latest reviews data i.e. updating paginated and/or location based reviews might have a
+    # different format requiring code changes.
+
+    # Clear dict if value found
+    for review in data['locationReviews']:
+        if review['review']['name'] == complete_review_id:
+            review['review']['reviewReply'] = {}
+            status['message'] = "Delete success"
+            break
+
+    # Write update to dummy JSON
+    with open('reviews.json', 'w') as file:
+        json.dump(data, file, indent=2)
+
+    return Response(
+        response=json.dumps(status),
+        status=200,
+        mimetype='application/json'
+    )
