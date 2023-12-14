@@ -36,10 +36,10 @@ function ReviewCard({ name, date, rating, comment, }) {
                 <p className='rounded-2xl outline-none bg-transparent text-white text-center p-2 self-center' >Reply </p>
             </div>
 
-            <div className={`group-hover:flex transition duration-300 flex-row p-4 pt-2 ${textboxValue ? "flex" : "hidden"}`}>
+            <div className={`group-hover:flex transition duration-300 max-sm:flex-col flex-row p-4 pt-2 ${textboxValue ? "flex" : "hidden"}`}>
                 
                 <input className='rounded-2xl outline-none placeholder:text-white bg-[#ffffff49] pl-4 p-1 flex-1' onChange={v => settextboxValue(v.target.value)} type='text' value={textboxValue} placeholder='Quick Reply...' />
-                <div className="flex flex-row">
+                <div className="flex flex-row max-sm:p-2 max-sm:mt-2 max-sm:self-center">
                     <Button icon={<IoReload />} text={"Clear"} className={"bg-blue-500"} onClickFunction={() => { settextboxValue("") }} />
                     <Button icon={<IoSend />} text={"Post"} className={"bg-green-500"} />
                     <Button icon={<FaTrash />} text={"Delete"} className={"bg-red-500"} />
