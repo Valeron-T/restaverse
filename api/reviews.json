@@ -14,8 +14,8 @@
         "createTime": "2023-04-01T12:00:00Z",
         "updateTime": "2023-04-02T09:00:00Z",
         "reviewReply": {
-          "comment": "Thanks for the review",
-          "updateTime": "2023-12-14T18:14:17Z"
+          "comment": "Awesome",
+          "updateTime": "2023-12-14T18:32:35Z"
         }
       }
     },
@@ -67,7 +67,10 @@
         "comment": "Absolutely poor customer service. Had the worst 2 hours of my life waiting for my order only to realise the chef walked out.",
         "createTime": "2023-02-01T11:45:00Z",
         "updateTime": "2023-02-02T10:00:00Z",
-        "reviewReply": {}
+        "reviewReply": {
+          "comment": "We are very sorry to hear this! Please get in touch with us at support@rest.in",
+          "updateTime": "2023-12-14T18:21:22Z"
+        }
       }
     }
   ],

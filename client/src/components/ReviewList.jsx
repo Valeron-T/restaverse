@@ -3,7 +3,7 @@ import { getTopReviews } from '../services/API'
 import ReviewCard from './ReviewCard'
 import DetailedReviewCard from './DetailedReviewCard'
 
-function ReviewList({ isDetailed }) {
+function ReviewList({ isDetailed, onlyDisplayNoReplies }) {
     const [reviews, setreviews] = useState({})
 
     useEffect(() => {

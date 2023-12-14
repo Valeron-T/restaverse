@@ -11,8 +11,8 @@ function ReplyModal({ currentReply, replyId }) {
 
     return (
         <Popup className='bg-black' trigger={<p className='rounded-2xl outline-none cursor-pointer bg-transparent text-white text-center p-2 self-center' >{currentReply ? "Modify Reply" : "Reply"} </p>} modal>
-            <div className="flex flex-col p-2">
-                <label>Your reply</label>
+            <div className="flex flex-col sm:p-4 p-2">
+                <label className='text-center'>Your reply</label>
                 <input className='rounded-2xl outline-none placeholder:text-white mt-2 bg-[#ffffff52] pl-4 p-1 flex-1'  onChange={v => settextboxValue(v.target.value)} type='text' value={textboxValue} placeholder='Type Something...'></input>
                 <div className="flex flex-row pt-4 justify-evenly">
                     <Button icon={<IoSend />} text={"Post"} className={"bg-green-500"} onClickFunction={() => { replyToReview(replyId, textboxValue) }} />

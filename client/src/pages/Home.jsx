@@ -33,7 +33,7 @@ function Home({ isLoggedin }) {
       </div>
       {isLoggedin && <div className="flex flex-col mt-0 m-4 sm:p-6 p-4 rounded-2xl bg-white">
         <h1 className='md:text-4xl sm:text-3xl text-2xl pb-2'>Latest Reviews</h1>
-        <ReviewList />
+        <ReviewList onlyDisplayNoReplies={true} />
       </div>}
     </div>
   )

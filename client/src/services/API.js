@@ -63,6 +63,7 @@ export const replyToReview = async (reviewId, replyMessage) => {
     "reply": replyMessage
   }
   var result = await fetchWithAuth("/reviews/reply", "PUT", reqbody)
+  window.location.reload()
   console.log(result)
   return result;
 }
@@ -74,6 +75,7 @@ export const deleteReview = async (reviewId) => {
     "rid": reviewId
   }
   var result = await fetchWithAuth("/reviews/delete", "DELETE", reqbody)
+  window.location.reload()
   console.log(result)
   return result;
 }
