@@ -1,0 +1,72 @@
+{
+  "locationReviews": [
+    {
+      "name": "accounts/1234567890/locations/987654321",
+      "review": {
+        "name": "accounts/1234567890/locations/987654321/reviews/111",
+        "reviewId": "111",
+        "reviewer": {
+          "displayName": "John Doe",
+          "profilePhotoUrl": "https://example.com/profiles/johndoe.jpg"
+        },
+        "starRating": 4,
+        "comment": "Great experience! Will surely visit again soon and recommend this place.",
+        "createTime": "2023-04-01T12:00:00Z",
+        "updateTime": "2023-04-02T09:00:00Z",
+        "reviewReply": {
+          "comment": "Thank You so much for the review",
+          "updateTime": "2023-12-14T13:55:15Z"
+        }
+      }
+    },
+    {
+      "name": "accounts/1234567890/locations/987654321",
+      "review": {
+        "name": "accounts/1234567890/locations/987654321/reviews/222",
+        "reviewId": "222",
+        "reviewer": {
+          "displayName": "Jane Smith",
+          "profilePhotoUrl": "https://example.com/profiles/janesmith.jpg"
+        },
+        "starRating": 5,
+        "comment": "From the ambiance to the diverse menu offerings, each visit unveils a new reason to fall in love with this restaurant",
+        "createTime": "2023-03-05T15:30:00Z",
+        "updateTime": "2023-03-06T11:00:00Z",
+        "reviewReply": {}
+      }
+    },
+    {
+      "name": "accounts/1234567890/locations/543210987",
+      "review": {
+        "name": "accounts/1234567890/locations/543210987/reviews/333",
+        "reviewId": "333",
+        "reviewer": {
+          "displayName": "Alice Johnson",
+          "profilePhotoUrl": "https://example.com/profiles/alice.jpg"
+        },
+        "starRating": 4,
+        "comment": "The attention to detail in both presentation and taste left me longing for another visit.",
+        "createTime": "2023-02-10T09:30:00Z",
+        "updateTime": "2023-02-11T08:00:00Z",
+        "reviewReply": {}
+      }
+    },
+    {
+      "name": "accounts/1234567890/locations/543210987",
+      "review": {
+        "name": "accounts/1234567890/locations/543210987/reviews/444",
+        "reviewId": "444",
+        "reviewer": {
+          "displayName": "Bob Anderson",
+          "profilePhotoUrl": "https://example.com/profiles/bob.jpg"
+        },
+        "starRating": 5,
+        "comment": "An inviting atmosphere combined with mouthwatering flavors made for an unforgettable dining experience.",
+        "createTime": "2023-02-01T11:45:00Z",
+        "updateTime": "2023-02-02T10:00:00Z",
+        "reviewReply": {}
+      }
+    }
+  ],
+  "nextPageToken": "some_next_page_token"
+}

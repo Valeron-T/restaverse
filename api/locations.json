@@ -1,0 +1,56 @@
+{
+      "locations": [
+        {
+          "name": "accounts/1234567890/locations/987654321",
+          "locationName": "Mumbai Central Restaurant",
+          "primaryCategory": {
+            "displayName": "Indian Cuisine",
+            "categoryId": "gcid:indian_cuisine"
+          },
+          "address": {
+            "regionCode": "IN",
+            "languageCode": "en",
+            "postalCode": "400008",
+            "administrativeArea": "MH",
+            "locality": "Mumbai",
+            "addressLines": [
+              "123 South Mumbai St"
+            ]
+          },
+          "locationKey": {
+            "placeId": "ChIJV5-uS7xTqjsRwjjbYhYJAgQ",
+            "requestId": "MUMBAIKEY123"
+          },
+          "metadata": {
+            "createTime": "2023-06-15T10:00:00Z",
+            "updateTime": "2023-06-20T12:45:00Z"
+          }
+        },
+        {
+          "name": "accounts/1234567890/locations/543210987",
+          "locationName": "Mumbai Coffee Hub",
+          "primaryCategory": {
+            "displayName": "Coffee Shop",
+            "categoryId": "gcid:coffee_shop"
+          },
+          "address": {
+            "regionCode": "IN",
+            "languageCode": "en",
+            "postalCode": "400022",
+            "administrativeArea": "MH",
+            "locality": "Mumbai",
+            "addressLines": [
+              "456 North Mumbai St"
+            ]
+          },
+          "locationKey": {
+            "placeId": "ChIJW6K5XT1B5zsRa6TIJnQHba0",
+            "requestId": "MUMBAIKEY456"
+          },
+          "metadata": {
+            "createTime": "2023-07-05T09:30:00Z",
+            "updateTime": "2023-07-10T11:15:00Z"
+          }
+        }
+      ]
+    }
