@@ -1,4 +1,4 @@
-import { json } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 const BaseAPI_URL = "http://192.168.0.132:5000"
 
@@ -35,6 +35,16 @@ export const authenticate = async () => {
   window.location.replace(jsonData.auth_url);
   console.log("Auth complete")
   return jsonData.auth_url;
+}
+
+export const logout = async () => {
+  console.log("Logout initiated")
+  // const response = await fetch(`${BaseAPI_URL}/logout`);
+  localStorage.removeItem('JWT');
+  localStorage.removeItem('user');
+  localStorage.removeItem('email');
+  window.location.replace("/");
+  return 0;
 }
 
 export const getEvents = async () => {

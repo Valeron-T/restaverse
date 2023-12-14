@@ -59,7 +59,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home isLoggedin={loggedIn} />} />
           <Route path="/reviews" element={<Reviews isLoggedin={loggedIn} />} />
-          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/analytics" element={<Analytics isLoggedin={loggedIn} />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/help" element={<Help />} />
         </Routes>

@@ -1,17 +1,16 @@
 import { User } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { LuLogIn } from "react-icons/lu";
-import { authenticate } from '../services/API';
+import { authenticate, logout } from '../services/API';
 import { Link } from 'react-router-dom';
+import SignOutModal from './SignOutModal';
 
 
 function SignIn({ isExpanded }) {
 
     return (
         <div className={`border-t flex p-3 transition-all cursor-pointer ${isExpanded ? "bg-blue-100" : "max-sm:hidden"} `}>
-            <button className="p-2 rounded-lg text-slate-200 bg-blue-500 hover:bg-blue-800" onClick={authenticate}>
-                {localStorage.getItem('user') ? <User /> : <LuLogIn />}
-            </button>
+            <SignOutModal logout={logout} authenticate={authenticate}/>
 
             <div
                 className={`

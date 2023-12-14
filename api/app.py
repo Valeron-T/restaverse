@@ -230,7 +230,7 @@ def delete_review():
 @app.route("/logout")
 def logout():
     session.clear()
-    return redirect("/")
+    return redirect("http://localhost:5173/")
 
 
 @app.route('/', methods=['GET'])
