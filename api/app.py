@@ -109,12 +109,6 @@ def callback():
     return redirect(f"{FRONTEND_URL}/?jwt={jwt_token}&user={session['name']}&email={id_info['email']}")
 
 
-@app.route("/protected_area")
-# @login_is_required
-def protected_area():
-    return redirect("http://localhost:5173/reviews")
-
-
 @app.route("/home")
 # @login_is_required
 def home_page_user():
