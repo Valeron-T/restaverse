@@ -193,7 +193,7 @@ def latest_reviews():
 
 
 @app.route("/reviews/reply", methods=['PUT'])
-@login_is_required
+# @login_is_required
 def reply_to_review():
     if request.method == 'PUT':
         # Access the JSON data sent with the POST request
@@ -230,7 +230,7 @@ def delete_review():
 @app.route("/logout")
 def logout():
     session.clear()
-    return redirect("http://localhost:5173/")
+    return redirect(FRONTEND_URL)
 
 
 @app.route('/', methods=['GET'])
@@ -242,4 +242,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run(debug=os.getenv("DEBUG"))
+    app.run(debug=os.getenv("DEBUG"), host="0.0.0.0")
