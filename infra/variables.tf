@@ -11,7 +11,7 @@ variable "resource_group_name" {
 
 variable "vm_type" {
   type = string
-  description = "VM instance type. Example: B1s, B2s etc."
+  description = "VM instance type. Example: Standard_B1s, Standard_B2s etc."
 }
 
 variable "vm_username" {
@@ -26,5 +26,5 @@ variable "vm_password" {
 
 variable "public_ip_domain_name_label" {
   type = string
-  description = "ONLY label for auto generated FQDN to access the website. Format: <label>.<azure_region>.cloudapp.azure.com. Keep as unique as possible."
+  description = "ONLY label for auto generated FQDN to access the website. Format: label.azure_region.cloudapp.azure.com. Keep as unique as possible."
 }
