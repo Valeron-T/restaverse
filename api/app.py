@@ -117,27 +117,6 @@ def callback():
     return redirect(f"{FRONTEND_URL}/?jwt={jwt_token}&user={session['name']}&email={id_info['email']}")
 
 
-@app.route("/home")
-# @login_is_required
-def home_page_user():
-    encoded_jwt = request.headers.get("Authorization").split("Bearer ")[1]
-    try:
-        decoded_jwt = jwt.decode(encoded_jwt, app.secret_key, algorithms=[os.getenv("ALGORITHM")])
-        print(decoded_jwt)
-    except Exception as e:
-        return Response(
-            response=json.dumps({"message": "Decoding JWT Failed", "exception": e.args}),
-            status=500,
-            mimetype='application/json'
-        )
-
-    return Response(
-        response=json.dumps(decoded_jwt),
-        status=200,
-        mimetype='application/json'
-    )
-
-
 def decodejwt(encoded_jwt):
     print(encoded_jwt)
     try:

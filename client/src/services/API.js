@@ -1,6 +1,4 @@
-import { json, useNavigate } from "react-router-dom";
-
-const BaseAPI_URL = "http://localhost:5000"
+const BaseAPI_URL = import.meta.env.VITE_BASEAPI_URL
 
 // Call API calls with this wrapper to check if auth token is present locally.
 async function fetchWithAuth(relativePath, method = "GET", requestBody = null) {

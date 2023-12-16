@@ -26,8 +26,8 @@ function DetailedReviewCard({ name, modifiedDate, rating, comment, rid, createdD
                     <div className="flex flex-col">
                         <h2 className='text-2xl mb-2'>{name}</h2>
                         <p className='text-xs'>Modified on {modifiedDate.split("T")[0]} at {modifiedDate.split("T")[1]}</p>
-                        <p className='text-xs'>Created on {createdDate.split("T")[0]} at {createdDate.split("T")[1]}</p>
-                        {currentReplyDate && <p className='text-xs'>Replied on {currentReplyDate.split("T")[0]} at {currentReplyDate.split("T")[1]}</p>}
+                        <p className='text-xs pt-1'>Created on {createdDate.split("T")[0]} at {createdDate.split("T")[1]}</p>
+                        {currentReplyDate && <p className='text-xs pt-1'>Replied on {currentReplyDate.split("T")[0]} at {currentReplyDate.split("T")[1]}</p>}
                     </div>
                 </div>
                 <div className="flex flex-col p-4 justify-between sm:w-[65%]">
