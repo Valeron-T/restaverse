@@ -16,9 +16,11 @@ from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 import google.oauth2.credentials
 
+# Initialise Flask and CORS
 app = Flask("Reviews backend")
 cors = CORS(app)
 
+# If debug is enabled all requests will be made to the mock API
 if os.getenv("DEBUG"):
     routes = test_routes
 else:
@@ -39,22 +41,26 @@ flow = Flow.from_client_secrets_file(
             "https://www.googleapis.com/auth/drive.metadata.readonly",  # Only for testing purposes
             "https://www.googleapis.com/auth/business.manage",
             "openid"],
-    redirect_uri="http://localhost:5000/callback"
+    redirect_uri=f"{os.getenv('BACKEND_URL')}/callback"
 )
 
-
+# Wrapper function which calls destination function only if jwt token is present client side.
+# It does not validate authenticity of the token
 def login_is_required(function):
     def wrapper(*args, **kwargs):
         try:
             encoded_jwt = request.headers.get("Authorization").split("Bearer ")[1]
         except AttributeError as e:
+            # If this header doesn't exist in request, then return Bad Format
             return abort(400)
 
+        # If jwt is not present then return Unauthorised
         if encoded_jwt is None:
             return abort(401)
         else:
             return function()
 
+    # Important to be able to apply same wrapper to multiple functions
     wrapper.__name__ = function.__name__
     return wrapper
 
@@ -64,6 +70,7 @@ def Generate_JWT(payload):
     return encoded_jwt
 
 
+# Returns a Google oauth url for redirection
 @app.route("/login")
 def login():
     authorization_url, state = flow.authorization_url()
@@ -75,6 +82,7 @@ def login():
     )
 
 
+# Calls this method after user signs into Google which returns a JWT for storing in client browser.
 @app.route("/callback")
 def callback():
     flow.fetch_token(authorization_response=request.url)
@@ -144,7 +152,7 @@ def decodejwt(encoded_jwt):
 
     return decoded_jwt
 
-
+# Method for testing that user's drive files can be listed after oauth.
 @app.route("/events")
 @login_is_required
 def events():
@@ -174,13 +182,15 @@ def events():
     return {"message": "Events called"}
 
 
-@app.route("/locations")
+# List all locations linked to the user's account
+@app.route("/locations", methods=["GET"])
 @login_is_required
 def location():
     return routes.get_locations()
 
 
-@app.route("/reviews/latest")
+# Gets latest 50 reviews across all locations.
+@app.route("/reviews/latest", methods=["GET"])
 @login_is_required
 def latest_reviews():
     return routes.get_latest_reviews()
