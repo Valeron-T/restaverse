@@ -1,0 +1,5 @@
+infra/.terraform
+infra/.terraform*
+infra/terraform*
+infra/private.tfvars
+infra/deploy_with_docker.sh
