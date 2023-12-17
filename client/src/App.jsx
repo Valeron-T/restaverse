@@ -14,23 +14,33 @@ import Help from './pages/Help';
 
 function App() {
   const [sidebarActiveItem, setsidebarActiveItem] = useState(1)
-  // const [locationData, setlocationData] = useState({})
   const [loggedIn, setloggedIn] = useState(localStorage.getItem("JWT"))
 
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     getLocations().then(v => setlocationData(v))
-  //     console.log(locationData)
-  //   }
+  useEffect(() => {
+    switch (window.location.pathname) {
+      case "/":
+        setsidebarActiveItem(1)
+        break;
+      case "/reviews":
+        setsidebarActiveItem(2)
+        break;
+      case "/analytics":
+        setsidebarActiveItem(3)
+        break;
+      case "/settings":
+        setsidebarActiveItem(4)
+        break;
+      case "/help":
+        setsidebarActiveItem(5)
+        break;
+    }
 
-  // }, [])
+  }, [window.location.pathname])
 
   // Update loggedIn variable if locally stored JWT changes
   useEffect(() => {
     setloggedIn(localStorage.getItem("JWT"))
   }, [localStorage.getItem("JWT")])
-
-  // TODO: Make navbar item active based on active url path
 
   return (
     <>
