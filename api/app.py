@@ -12,7 +12,7 @@ import os
 import requests
 from pip._vendor import cachecontrol
 import google.auth.transport.requests
-from google.auth.transport.requests import Request
+# from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 import google.oauth2.credentials
 
@@ -38,11 +38,12 @@ flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
     scopes=["https://www.googleapis.com/auth/userinfo.profile",
             "https://www.googleapis.com/auth/userinfo.email",
-            "https://www.googleapis.com/auth/drive.metadata.readonly",  # Only for testing purposes
+            # "https://www.googleapis.com/auth/drive",  # Only for testing purposes
             "https://www.googleapis.com/auth/business.manage",
             "openid"],
     redirect_uri=f"{os.getenv('BACKEND_URL')}/callback"
 )
+
 
 # Wrapper function which calls destination function only if jwt token is present client side.
 # It does not validate authenticity of the token
@@ -120,8 +121,18 @@ def callback():
 def decodejwt(encoded_jwt):
     print(encoded_jwt)
     try:
-        decoded_jwt = jwt.decode(encoded_jwt, app.secret_key, algorithms=[os.getenv("ALGORITHM")])
-        print(decoded_jwt)
+        credentials_dict = jwt.decode(encoded_jwt, app.secret_key, algorithms=[os.getenv("ALGORITHM")])
+        print(credentials_dict)
+
+        credentials = google.oauth2.credentials.Credentials(
+            credentials_dict["token"],
+            refresh_token=credentials_dict["refresh_token"],
+            token_uri=credentials_dict["token_uri"],
+            client_id=credentials_dict["client_id"],
+            client_secret=credentials_dict["client_secret"],
+            scopes=credentials_dict["scopes"])
+
+        print(credentials)
     except Exception as e:
         return Response(
             response=json.dumps({"message": "Decoding JWT Failed", "exception": e.args}),
@@ -129,36 +140,29 @@ def decodejwt(encoded_jwt):
             mimetype='application/json'
         )
 
-    return decoded_jwt
+    return credentials
 
-# Method for testing that user's drive files can be listed after oauth.
-@app.route("/events")
+
+# Method for testing API access
+@app.route("/test")
 @login_is_required
-def events():
+def test():
     encoded_jwt = request.headers.get("Authorization").split("Bearer ")[1]
 
-    credentials_dict = decodejwt(encoded_jwt)
+    credentials = decodejwt(encoded_jwt)
 
-    credentials = google.oauth2.credentials.Credentials(
-        credentials_dict["token"],
-        refresh_token=credentials_dict["refresh_token"],
-        token_uri=credentials_dict["token_uri"],
-        client_id=credentials_dict["client_id"],
-        client_secret=credentials_dict["client_secret"],
-        scopes=credentials_dict["scopes"])
+    # drive = googleapiclient.discovery.build(
+    #     "drive", "v2", credentials=credentials)
+    #
+    # files = drive.files().list().execute()
+    # print(files)
 
-    print(credentials)
-    drive = googleapiclient.discovery.build(
-        "drive", "v2", credentials=credentials)
+    # list account details using Google business API - returns Quota exceeded which is normal if Business API is disabled on the account
+    accs = googleapiclient.discovery.build("mybusinessaccountmanagement", "v1", credentials=credentials)
+    accname = accs.accounts().list().execute()
+    print(accname)
 
-    files = drive.files().list().execute()
-    print(files)
-
-    # accs = googleapiclient.discovery.build("mybusinessaccountmanagement","v1", credentials=credentials)
-    # accname = accs.accounts().list().execute()
-    # print(accname)
-
-    return {"message": "Events called"}
+    return jsonify({"message": "Test called"}), 200
 
 
 # List all locations linked to the user's account

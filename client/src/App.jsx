@@ -14,16 +14,16 @@ import Help from './pages/Help';
 
 function App() {
   const [sidebarActiveItem, setsidebarActiveItem] = useState(1)
-  const [locationData, setlocationData] = useState({})
+  // const [locationData, setlocationData] = useState({})
   const [loggedIn, setloggedIn] = useState(localStorage.getItem("JWT"))
 
-  useEffect(() => {
-    if (loggedIn) {
-      getLocations().then(v => setlocationData(v))
-      console.log(locationData)
-    }
+  // useEffect(() => {
+  //   if (loggedIn) {
+  //     getLocations().then(v => setlocationData(v))
+  //     console.log(locationData)
+  //   }
 
-  }, [])
+  // }, [])
 
   // Update loggedIn variable if locally stored JWT changes
   useEffect(() => {

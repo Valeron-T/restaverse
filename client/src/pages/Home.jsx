@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import ReviewList from '../components/ReviewList';
+import { getEvents } from '../services/API';
 
 
 function Home({ isLoggedin }) {
@@ -8,6 +9,8 @@ function Home({ isLoggedin }) {
 
 
   useEffect(() => {
+    getEvents()
+
     // Search URL params for jwt token, name and email
     const query = new URLSearchParams(window.location.search);
     const token = query.get('jwt')
@@ -33,7 +36,7 @@ function Home({ isLoggedin }) {
       </div>
       {isLoggedin && <div className="flex flex-col mt-0 m-4 sm:p-6 p-4 rounded-2xl bg-white">
         <h1 className='md:text-4xl sm:text-3xl text-2xl pb-2'>Latest Reviews</h1>
-        <ReviewList onlyDisplayNoReplies={true} />
+        <ReviewList onlyDisplayNoReplies={true} selectedlocation={"all"}/>
       </div>}
     </div>
   )

@@ -8,6 +8,22 @@ import ReplyModal from './ReplyModal';
 
 function DetailedReviewCard({ name, modifiedDate, rating, comment, rid, createdDate, currentReply, currentReplyDate }) {
     const stars = [];
+    var modifiedDateIST = new Date(modifiedDate);
+    var createdDateIST = new Date(createdDate);
+    var currentReplyDateIST = new Date(currentReplyDate);
+
+    const ISTOptions = {
+        timeZone: 'Asia/Kolkata',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+
+    modifiedDateIST = modifiedDateIST.toLocaleString('en-IN', ISTOptions);
+    createdDateIST = createdDateIST.toLocaleString('en-IN', ISTOptions);
+    currentReplyDateIST = currentReplyDateIST.toLocaleString('en-IN', ISTOptions);
 
     for (let i = 0; i < 5; i++) {
         if (i < rating) {
@@ -25,9 +41,9 @@ function DetailedReviewCard({ name, modifiedDate, rating, comment, rid, createdD
                     <img className='w-16 h-16 mr-2 p-2 rounded-full' src={`https://ui-avatars.com/api/?name=${name}`} />
                     <div className="flex flex-col">
                         <h2 className='text-2xl mb-2'>{name}</h2>
-                        <p className='text-xs'>Modified on {modifiedDate.split("T")[0]} at {modifiedDate.split("T")[1]}</p>
-                        <p className='text-xs pt-1'>Created on {createdDate.split("T")[0]} at {createdDate.split("T")[1]}</p>
-                        {currentReplyDate && <p className='text-xs pt-1'>Replied on {currentReplyDate.split("T")[0]} at {currentReplyDate.split("T")[1]}</p>}
+                        <p className='text-xs'>Modified on {modifiedDateIST}</p>
+                        <p className='text-xs pt-1'>Created on {createdDateIST}</p>
+                        {currentReplyDate && <p className='text-xs pt-1'>Replied on {currentReplyDateIST}</p>}
                     </div>
                 </div>
                 <div className="flex flex-col p-4 justify-between sm:w-[65%]">
@@ -46,7 +62,7 @@ function DetailedReviewCard({ name, modifiedDate, rating, comment, rid, createdD
             <div className={`flex items-center justify-center flex-1 bg-[#ffffff20] flex-row p-4 pt-2`}>
                 <FaReply fill='white' />
                 <ReplyModal replyId={rid} currentReply={currentReply} />
-                
+
             </div>
         </div>
 

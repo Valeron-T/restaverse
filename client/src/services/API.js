@@ -46,8 +46,8 @@ export const logout = async () => {
 }
 
 export const getEvents = async () => {
-  var result = await fetchWithAuth("/events")
-  return result;
+  // var result = await fetchWithAuth("/test")
+  return 0;
 }
 
 // Gets all available locations linked to user account
