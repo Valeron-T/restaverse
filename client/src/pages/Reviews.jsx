@@ -5,13 +5,17 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
 function Reviews({ isLoggedin }) {
+  // Store data of all locations with their Id 
   const [locations, setLocations] = useState([])
+
+  // Location filter chosen by user
   const [selectedlocation, setSelectedLocation] = useState({
     label: 'All (Default)',
     value: 'all'
   })
 
   useEffect(() => {
+    // Fetch all locations and format them as required by the dropdown widget
     getLocations().then(val => {
 
       const defaultChoice = [{

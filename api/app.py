@@ -180,7 +180,7 @@ def latest_reviews():
 
 
 @app.route("/reviews/reply", methods=['PUT'])
-# @login_is_required
+@login_is_required
 def reply_to_review():
     if request.method == 'PUT':
         # Access the JSON data sent with the POST request
