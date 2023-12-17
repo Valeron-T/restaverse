@@ -20,7 +20,7 @@ function ReviewCard({ name, date, rating, comment, rid }) {
     return (
 
 
-        <div className={`flex flex-col rounded-2xl ${rating>3?"bg-green-800":rating<3?"bg-red-800":"bg-[#005B8E]"} mt-2 text-white group`}>
+        <div className={`flex flex-col rounded-2xl ${rating>3?"bg-green-800":rating<3?"bg-red-800":"bg-[#005B8E]"} mt-4 text-white group`}>
             <div className="flex flex-row pb-0 p-4 justify-between">
                 <h2 className='text-2xl'>{name}</h2>
                 <div className="flex flex-row mr-2">
@@ -32,7 +32,7 @@ function ReviewCard({ name, date, rating, comment, rid }) {
                 <p>{comment}</p>
             </div>
             {/* <div className={`group-hover:flex flex-row p-4 pt-2 hidden`}> */}
-            <div className={`group-hover:hidden flex items-center justify-center flex-1 bg-[#ffffff20] flex-row p-4 pt-2 ${textboxValue ? "hidden" : "opacity-100"}`}>
+            <div className={`group-hover:hidden rounded-b-2xl flex items-center justify-center flex-1 bg-[#ffffff20] flex-row p-4 pt-2 ${textboxValue ? "hidden" : "opacity-100"}`}>
                 <FaReply className='' />
                 <p className='rounded-2xl outline-none bg-transparent text-white text-center p-2 self-center' >Reply </p>
             </div>

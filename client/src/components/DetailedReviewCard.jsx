@@ -34,7 +34,7 @@ function DetailedReviewCard({ name, modifiedDate, rating, comment, rid, createdD
     }
 
     return (
-        <div className={`flex flex-col ${rating > 3 ? "bg-green-800" : rating < 3 ? "bg-red-800" : "bg-[#005B8E]"}  rounded-2xl mt-2`}>
+        <div className={`flex mt-4 flex-col ${rating > 3 ? "bg-green-800" : rating < 3 ? "bg-red-800" : "bg-[#005B8E]"}  rounded-2xl mt-2`}>
             <div className="flex sm:flex-row flex-col text-white">
                 <div className="flex flex-row p-4 justify-start items-start sm:w-[30%]">
                     {/* Can optionally use Google profile Image */}
@@ -59,7 +59,7 @@ function DetailedReviewCard({ name, modifiedDate, rating, comment, rid, createdD
 
             </div>
 
-            <div className={`flex items-center justify-center flex-1 bg-[#ffffff20] flex-row p-4 pt-2`}>
+            <div className={`flex rounded-b-2xl items-center justify-center flex-1 bg-[#ffffff20] flex-row p-4 pt-2`}>
                 <FaReply fill='white' />
                 <ReplyModal replyId={rid} currentReply={currentReply} />
 
