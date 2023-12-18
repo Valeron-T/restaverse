@@ -44,6 +44,9 @@
 4. If a user want to see more detailed information about each review, then they can go to the reviews tab. This tab also allows filtering by available locations.
 5. To logout, click the very same user icon at the bottom of the navbar
 
+## Note
+- Currently anyone who logs in with a google acc can view/modify/reply to reviews as data is fetched from a json which mimics the response format of google API.
+
 ## How to Run this Project ?
 ### Mandatory Steps
 1. Go to the Google Cloud Console.
