@@ -4,6 +4,8 @@ from datetime import datetime, timezone
 from flask import Response
 
 
+# Test routes (Mock API)
+
 def get_locations():
     # Get locations to later fetch reviews by locations
     # Sample response based on https://mybusiness.googleapis.com/v4/{parent=accounts/*}/locations

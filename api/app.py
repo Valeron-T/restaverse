@@ -74,7 +74,7 @@ def Generate_JWT(payload):
 # Returns a Google oauth url for redirection
 @app.route("/login")
 def login():
-    authorization_url, state = flow.authorization_url()
+    authorization_url, state = flow.authorization_url(access_type='offline')
     session["state"] = state
     return Response(
         response=json.dumps({'auth_url': authorization_url}),
@@ -107,15 +107,12 @@ def callback():
         clock_skew_in_seconds=2  # Prevents token used too early error
     )
 
-    session["google_id"] = id_info.get("sub")
-    session["name"] = id_info.get("name")
-    print(id_info['email'])
-    print(session['google_id'])
+    # session["google_id"] = id_info.get("sub")
+    # session["name"] = id_info.get("name")
 
     del id_info['aud']
-    # jwt_token = Generate_JWT(id_info)
     jwt_token = Generate_JWT(session["credentials"])
-    return redirect(f"{FRONTEND_URL}/?jwt={jwt_token}&user={session['name']}&email={id_info['email']}")
+    return redirect(f"{FRONTEND_URL}/?jwt={jwt_token}&user={id_info['name']}&email={id_info['email']}")
 
 
 def decodejwt(encoded_jwt):
@@ -214,10 +211,24 @@ def delete_review():
             return jsonify({'message': 'No JSON data received'}), 400
 
 
-@app.route("/logout")
+@app.route("/logout", methods=["GET"])
+@login_is_required
 def logout():
+    print("Executing logout")
     session.clear()
-    return redirect(FRONTEND_URL)
+    encoded_jwt = request.headers.get("Authorization").split("Bearer ")[1]
+
+    credentials = decodejwt(encoded_jwt)
+    print(f"creds: {credentials.token}")
+    revoke = requests.post('https://oauth2.googleapis.com/revoke',
+                           params={'token': credentials.token},
+                           headers={'content-type': 'application/x-www-form-urlencoded'})
+
+    status_code = getattr(revoke, 'status_code')
+    if status_code == 200:
+        return jsonify({"message": 'Credentials successfully revoked.'}), 200
+    else:
+        return jsonify({"message": 'Error revoking credentials'}), 500
 
 
 @app.route('/', methods=['GET'])
