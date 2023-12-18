@@ -1,4 +1,4 @@
-## Review Manager Portal
+# Review Manager Portal
 
 ### Overview
 - This project creates a centralized dashboard where business owners can manage the reviews across all their business locations in one place using Google MyBusiness API. 
@@ -18,6 +18,7 @@
   - Making sure the Oauth token is always secure by encrypting it during transport from client to server or vice versa and the means of passing it to the server using headers. 
   - Understanding how oauth works was key to overcoming it along with Google's Documentation, tutorials and even Stackoverflow.
 - As there was no access to Google's My Business API, there was a need to create a mock API that replicates responses that the original API would send.
+- To implement the actual API, we would have to have some way to test it. Even if we follow the docs, we cannot guarantee that there won't be any issues.
 
 ### Future Prospects
 - Features
@@ -33,7 +34,14 @@
     - Strengthen security using a proxy server to access the client for isolation
     - Conduct extensive testing
 
-# How to Run this Project ?
+## How to use the website ?
+1. Sign in with google by clicking the icon at the bottom of the navbar.
+2. On successfull sign-in, one can see the latest reviews in the home page. The home page has the quick reply option which can be toggled by hovering over it.
+3. From there the user can post a reply or delete a previous reply.
+4. If a user want to see more detailed information about each review, then they can go to the reviews tab. This tab also allows filtering by available locations.
+5. To logout, click the very same user icon at the bottom of the navbar
+
+## How to Run this Project ?
 ### Mandatory Steps
 1. Go to the Google Cloud Console.
 2. Select or create a new project where your React app will be registered.
