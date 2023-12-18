@@ -1,5 +1,8 @@
 # Review Manager Portal
 
+### Project Link
+- http://restaverse-tf-312.centralindia.cloudapp.azure.com/
+
 ### Overview
 - This project creates a centralized dashboard where business owners can manage the reviews across all their business locations in one place using Google MyBusiness API. 
 - It features a homepage allowing users to quickly reply to the latest reviews via an intuitive UI. 
