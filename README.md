@@ -155,3 +155,12 @@
     ### Note
     - This is a very basic method of deploying to the cloud by simply running Docker on a VM. 
     - We can also make use of other PaaS cloud services (such as Azure ACI, AKS) and configure autoscale based on goals and budget.
+
+<details>
+  <summary>Screenshots</summary>
+  
+  ![restaverse-tf-312 centralindia cloudapp azure com_](https://github.com/Valeron-T/restaverse/assets/32789691/1915e867-50b8-4a9b-b418-1301c92bbfa4)
+  
+  <img src="https://github.com/Valeron-T/restaverse/assets/32789691/ec27b57c-1382-4cc0-b886-306b40dd19cc" width="30%" >
+  
+</details>
